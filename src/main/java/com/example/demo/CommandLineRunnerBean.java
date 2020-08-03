@@ -22,7 +22,7 @@ public class CommandLineRunnerBean implements CommandLineRunner {
         user.setPassword("mc");
         user.setEnabled(true);
 
-        Role userRole = new Role("user", "ROLE_USER");
+        Role userRole = new Role("mc", "ROLE_USER");
 
         userRepository.save(user);
         roleRepository.save(userRole);

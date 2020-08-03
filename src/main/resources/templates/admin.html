@@ -15,25 +15,29 @@
 <body>
 <div th:replace="index::navLinks"></div>
 
-<h1>Admin Page</h1>
+<h1>Admin Dashboard</h1>
 
-<a th:href="@{/newcategory}">New Category</a>
+<a th:href="@{/newdepartment}">New Department</a>
 <a th:href="@{/newemployee}">New Employee</a>
 
 <h3>All Employees</h3>
 
-<div th:each="employee : ${employees}">
+<div th:each="department : ${departments}">
 
-    First Name: [[${employee.firstName}]] <br>
-    Last Name: [[${employee.lastName}]] <br>
-    Job Title: [[${employee.jobTitle}]] <br>
-    Department: [[${employee.department}]] <br>
+    <h4>[[${department.name}]]</h4><br>
 
-    <a>Update Employee</a>
-    <a>Disable / Enable Employee</a>
-    <a>Disable / Enable Employee</a>
+    <div th:each="employee : ${department.employees}">
+        First Name: [[${employee.firstName}]] <br>
+        Last Name: [[${employee.lastName}]] <br>
+        Job Title: [[${employee.jobTitle}]] <br>
+        Employee ID : [[${employee.id}]] <br>
+        Status : <span th:text="${employee.isEnabled()} ? 'ACTIVE' : 'NO LONGER EMPLOYED'"></span> <br>
 
-    <hr class="my-4">
+        <a th:href="@{/updateemployee/{id} (id=${employee.id})}">Update Employee</a> <br>
+        <a th:href="@{/toggleemployee/{id} (id=${employee.id})}">Toggle Employee Status</a> <br>
+
+        <hr class="my-4">
+    </div>
 
 </div>
 

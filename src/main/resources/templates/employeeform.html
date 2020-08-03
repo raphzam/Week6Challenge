@@ -17,15 +17,15 @@
 
 <h1>Employee Form</h1>
 
-<form th:action="@{/processemployee}" th:object="${user}" method="post">
+<form th:action="@{/processemployee}" th:object="${employee}" method="post">
     <input type="hidden" th:field="*{id}">
 
     First Name : <input type="text" th:field="*{firstName}" placeholder="First Name"> <br>
     Last Name: <input type="text" th:field="*{lastName}" placeholder="Last Name"> <br>
-    Job Title: <input type="text" th:field="*{firstName}" placeholder="Job Title"> <br>
+    Job Title: <input type="text" th:field="*{jobTitle}" placeholder="Job Title"> <br>
 
     Department: <select th:field="*{department}">
-    <option th:each="department : ${deparments}"
+    <option th:each="department : ${departments}"
             th:text="${department.name}"
             th:value="${department.id}">
     </option>
