@@ -18,8 +18,8 @@ public class CommandLineRunnerBean implements CommandLineRunner {
         //USER ROLE
         User user = new User();
 
-        user.setUsername("user");
-        user.setPassword("user");
+        user.setUsername("mc");
+        user.setPassword("mc");
         user.setEnabled(true);
 
         Role userRole = new Role("user", "ROLE_USER");

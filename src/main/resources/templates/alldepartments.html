@@ -10,32 +10,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Admin Page</title>
+    <title>Hello, world!</title>
 </head>
 <body>
-<div th:replace="index::navLinks"></div>
-
-<h1>Admin Page</h1>
-
-<a th:href="@{/newcategory}">New Category</a>
-<a th:href="@{/newemployee}">New Employee</a>
-
-<h3>All Employees</h3>
-
-<div th:each="employee : ${employees}">
-
-    First Name: [[${employee.firstName}]] <br>
-    Last Name: [[${employee.lastName}]] <br>
-    Job Title: [[${employee.jobTitle}]] <br>
-    Department: [[${employee.department}]] <br>
-
-    <a>Update Employee</a>
-    <a>Disable / Enable Employee</a>
-    <a>Disable / Enable Employee</a>
-
-    <hr class="my-4">
-
-</div>
+<h1>Hello, world!</h1>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
