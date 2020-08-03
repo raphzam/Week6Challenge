@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css">
+
     <style>
         .logout {
             background: none!important;
@@ -70,8 +71,8 @@
 
 <h1 class="text-center">We Are Sterling Solutions</h1>
 
-<div sec:authorize="isAuthenticated()">
-Welcome: <div sec:authentication="name"></div>
+<div sec:authorize="isAuthenticated()" class="text-center">
+Welcome, <div sec:authentication="name"></div>
 </div>
 
 <!-- Optional JavaScript -->
