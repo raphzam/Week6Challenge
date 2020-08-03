@@ -13,22 +13,33 @@
     <title>Login</title>
 </head>
 <body>
-<div th:replace="index::navLinks"></div>
 
-<h1>Login</h1>
-<form th:action="@{/login}" method="post">
+<div th:replace="index::navbar"></div>
 
-    <input type="text" name="username" placeholder="username"><br>
-    <input type="password" name="password" placeholder="password"><br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-4">
+            <div class="card">
+                <h1 class="text-center">Login</h1>
+                <div class="card-body">
+                    <form th:action="@{/login}" method="post">
 
-    <input type="submit" value="Sign in">
+                        <input type="text" class="form-control" name="username" placeholder="username"><br>
+                        <input type="password" class="form-control" name="password" placeholder="password"><br>
 
-    <div th:if="${param.error}">
-        Invalid username or password
+                        <input type="submit" class="btn btn-primary" value="Sign in">
+                        <div th:if="${param.error}">
+                            Invalid username or password
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
     </div>
+</div>
 
-
-</form>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -10,35 +9,20 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>New Employee</title>
+    <title>Employee Detail</title>
 </head>
 <body>
 <div th:replace="index::navbar"></div>
 
 
-<div class="col-6">
-    <h1>Employee Form</h1>
-    <div class="card">
-        <div class="card-body">
-            <form th:action="@{/processemployee}" th:object="${employee}" method="post">
-                <input type="hidden" th:field="*{id}">
+<h1>Employee Detail</h1>
 
-                First Name : <input type="text" th:field="*{firstName}" class="form-control" placeholder="First Name">
-                <br>
-                Last Name: <input type="text" th:field="*{lastName}" class="form-control" placeholder="Last Name"> <br>
-                Job Title: <input type="text" th:field="*{jobTitle}" class="form-control" placeholder="Job Title"> <br>
+First Name: [[${employee.firstName}]] <br>
+Last Name: [[${employee.lastName}]] <br>
+Job Title: [[${employee.jobTitle}]] <br>
+Employee ID : [[${employee.id}]] <br>
+Status : <span th:text="${employee.isEnabled()} ? 'ACTIVE' : 'NO LONGER EMPLOYED'"></span> <br>
 
-                Department: <select th:field="*{department}">
-                <option th:each="department : ${departments}"
-                        th:text="${department.name}"
-                        th:value="${department.id}">
-                </option>
-            </select><br>
-                <input type="submit" value="submit">
-            </form>
-        </div>
-    </div>
-</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

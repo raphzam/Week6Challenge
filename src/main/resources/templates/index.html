@@ -9,23 +9,61 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .logout {
+            background: none!important;
+            border: none;
+            padding: 0!important;
+            /*optional*/
+            font-family: arial, sans-serif;
+            /*input has OS specific font-family*/
+            color: #069;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
 
     <title>Sterling Solutions</title>
 </head>
 <body>
 
-<div th:fragment="navLinks">
-    <ul>
-        <li><a th:href="@{/}">Index</a></li>
-        <li><a th:href="@{/alldepartments}">Department List</a></li>
-        <li><a th:href="@{/admin}">Admin</a></li>
-        <li><a th:href="@{/secure}">Secure</a></li>
-        <li>
-            <form th:action="@{/logout}" method="post"><input type="submit" value="Logout"/>
-            </form>
-        </li>
-    </ul>
+<div th:fragment="navbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">SterlingSolutions</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/alldepartments}">Departments</a>
+                </li>
+                <ul class="navbar-nav mr-auto" sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/directory}">Directory</a>
+                    </li>
+                    <div sec:authorize="hasRole('ADMIN')">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admin}">Admin</a>
+                        </li>
+                    </div><!--END ADMIN-only VIEW -->
+                </ul>
+            </ul>
+            <div sec:authorize="!isAuthenticated()">
+                <a th:href="@{/login}">Login</a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <form th:action="@{/logout}" method="post"><input type="submit" value="Logout"/>
+                </form>
+            </div>
+        </div>
+    </nav>
 </div>
+
 
 <h1>We Are Sterling Solutions</h1>
 

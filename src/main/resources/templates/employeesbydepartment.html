@@ -13,7 +13,23 @@
     <title>Employee Directory</title>
 </head>
 <body>
+<div th:replace="index::navbar"></div>
+
+
 <h1>Employees By Department</h1>
+<div th:each="department : ${departments}">
+
+    <h4>[[${department.name}]]</h4><br>
+
+    <div th:each="employee : ${department.employees}">
+        First Name: [[${employee.firstName}]] <br>
+        Last Name: [[${employee.lastName}]] <br>
+        Job Title: [[${employee.jobTitle}]] <br>
+        <a href="#" th:href="@{/employeedetail/{id} (id=${employee.id})}">View Detail</a>
+        <hr class="my-4">
+    </div>
+
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

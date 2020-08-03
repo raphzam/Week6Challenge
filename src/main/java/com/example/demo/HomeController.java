@@ -28,10 +28,6 @@ public class HomeController {
     }
 
 
-    @RequestMapping("/secure")
-    public String secure(){
-        return "secure";
-    }
 
 //    PUBLIC VIEWS
     @RequestMapping("/")
@@ -43,6 +39,24 @@ public class HomeController {
     public String allDepartments(Model model){
         model.addAttribute("departments", departmentRepository.findAll());
         return "alldepartments";
+    }
+
+//    LOGGED IN VIEWS
+    @RequestMapping("/secure")
+    public String secure(){
+        return "secure";
+    }
+
+    @RequestMapping("/directory")
+    public String employeeDirectory(Model model){
+        model.addAttribute("departments", departmentRepository.findAll());
+        return "employeesbydepartment";
+    }
+
+    @RequestMapping("/employeedetail/{id}")
+    public String employeeDetail(@PathVariable("id") long id, Model model){
+        model.addAttribute("employee", userRepository.findById(id).get());
+        return "employeedetail";
     }
 
 
