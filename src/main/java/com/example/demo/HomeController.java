@@ -107,6 +107,7 @@ public class HomeController {
 
         Role employeeRole = new Role(employee.getUsername(), "ROLE_USER");
         roleRepository.save(employeeRole);
+
         return "redirect:/admin";
     }
 

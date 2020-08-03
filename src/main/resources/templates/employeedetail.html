@@ -14,14 +14,26 @@
 <body>
 <div th:replace="index::navbar"></div>
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-4">
+            <h3 class="text-center">Employee Detail</h3>
+            <div class="card">
 
-<h1>Employee Detail</h1>
+                <div class="card-body">
+                    First Name: [[${employee.firstName}]] <br>
+                    Last Name: [[${employee.lastName}]] <br>
+                    Job Title: [[${employee.jobTitle}]] <br>
+                    Status : <span th:text="${employee.isEnabled()} ? 'ACTIVE' : 'NO LONGER EMPLOYED'"></span> <br>
+                </div>
 
-First Name: [[${employee.firstName}]] <br>
-Last Name: [[${employee.lastName}]] <br>
-Job Title: [[${employee.jobTitle}]] <br>
-Employee ID : [[${employee.id}]] <br>
-Status : <span th:text="${employee.isEnabled()} ? 'ACTIVE' : 'NO LONGER EMPLOYED'"></span> <br>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
 
 
 <!-- Optional JavaScript -->

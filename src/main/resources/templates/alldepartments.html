@@ -15,11 +15,24 @@
 <body>
 <div th:replace="index::navbar"></div>
 
-<h1>All Departments</h1>
+<h1 class="text-center">Department List</h1>
 
-<div th:each="department : ${departments}">
-    <h3>[[${department.name}]]</h3>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6">
+            <ul class="list-unstyled" th:each="department : ${departments}">
+                <li class="media">
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1 text-center">[[${department.name}]]</h5>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col"></div>
+    </div>
 </div>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

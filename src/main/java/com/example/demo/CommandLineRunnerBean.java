@@ -13,7 +13,15 @@ public class CommandLineRunnerBean implements CommandLineRunner {
     @Autowired
     RoleRepository roleRepository;
 
+    @Autowired
+    DepartmentRepository departmentRepository;
+
     public void run(String...strings){
+
+        //DEPARTMENT
+        Department sales = new Department();
+        sales.setName("Sales");
+        departmentRepository.save(sales);
 
         //USER ROLE
         User user = new User();
@@ -21,6 +29,11 @@ public class CommandLineRunnerBean implements CommandLineRunner {
         user.setUsername("mc");
         user.setPassword("mc");
         user.setEnabled(true);
+
+        user.setFirstName("Emm");
+        user.setLastName("Cee");
+        user.setDepartment(sales);
+        user.setJobTitle("Cashier");
 
         Role userRole = new Role("mc", "ROLE_USER");
 

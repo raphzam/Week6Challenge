@@ -30,26 +30,27 @@
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/alldepartments}">Departments</a>
             </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/directory}">Directory</a>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/directory}">Directory</a>
+            </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
                     Add
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#" th:href="@{/newdepartment}">Department</a>
                     <a class="dropdown-item" href="#" th:href="@{/newemployee}">Employee</a>
-<!--                    <div class="dropdown-divider"></div>-->
+                    <!--                    <div class="dropdown-divider"></div>-->
                 </div>
             </li>
-<!--            <div sec:authorize="isAuthenticated()">-->
-<!--                <div sec:authorize="hasRole('ADMIN')">-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" th:href="@{/admin}">Admin</a>-->
-<!--                    </li>-->
-<!--                </div>&lt;!&ndash;END ADMIN-only VIEW &ndash;&gt;-->
-<!--            </div>-->
+            <!--            <div sec:authorize="isAuthenticated()">-->
+            <!--                <div sec:authorize="hasRole('ADMIN')">-->
+            <!--                    <li class="nav-item">-->
+            <!--                        <a class="nav-link" th:href="@{/admin}">Admin</a>-->
+            <!--                    </li>-->
+            <!--                </div>&lt;!&ndash;END ADMIN-only VIEW &ndash;&gt;-->
+            <!--            </div>-->
         </ul>
         <div sec:authorize="!isAuthenticated()">
             <a th:href="@{/login}">Login</a>
@@ -62,30 +63,40 @@
 </nav>
 
 
-<h1>Admin Dashboard</h1>
+<h1 class="text-center">Admin Dashboard</h1>
 
 
-<h3>All Employees</h3>
+<h3 class="text-center">All Staff By Department</h3>
 
-<div th:each="department : ${departments}">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-11">
+            <div th:each="department : ${departments}">
 
-    <h4>[[${department.name}]]</h4>
-    <a th:href="@{/updatedepartment/{id} (id=${department.id})}">Update Department</a><br>
+                <h4>[[${department.name}]]</h4>
+                <a th:href="@{/updatedepartment/{id} (id=${department.id})}">Update Department</a><br>
 
-    <div th:each="employee : ${department.employees}">
-        First Name: [[${employee.firstName}]] <br>
-        Last Name: [[${employee.lastName}]] <br>
-        Job Title: [[${employee.jobTitle}]] <br>
-        Employee ID : [[${employee.id}]] <br>
-        Status : <span th:text="${employee.isEnabled()} ? 'ACTIVE' : 'NO LONGER EMPLOYED'"></span> <br>
+                <div th:each="employee : ${department.employees}">
+                    First Name: [[${employee.firstName}]] <br>
+                    Last Name: [[${employee.lastName}]] <br>
+                    Job Title: [[${employee.jobTitle}]] <br>
+                    Employee ID : [[${employee.id}]] <br>
+                    Status : <span th:text="${employee.isEnabled()} ? 'ACTIVE' : 'NO LONGER EMPLOYED'"></span> <br>
 
-        <a th:href="@{/updateemployee/{id} (id=${employee.id})}">Update Employee</a> <br>
-        <a th:href="@{/toggleemployee/{id} (id=${employee.id})}">Toggle Employee Status</a> <br>
+                    <a th:href="@{/updateemployee/{id} (id=${employee.id})}">Update Employee</a> <br>
+                    <a th:href="@{/toggleemployee/{id} (id=${employee.id})}">Toggle Employee Status</a> <br>
+                    <br>
 
-        <hr class="my-4">
+                </div>
+                <hr class="my-4">
+
+            </div>
+        </div>
+        <div class="col"></div>
     </div>
-
 </div>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

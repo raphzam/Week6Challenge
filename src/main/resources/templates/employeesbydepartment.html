@@ -15,20 +15,31 @@
 <body>
 <div th:replace="index::navbar"></div>
 
+<h1 class="text-center">Employee Directory</h1>
 
-<h1>Employees By Department</h1>
-<div th:each="department : ${departments}">
-
-    <h4>[[${department.name}]]</h4><br>
-
-    <div th:each="employee : ${department.employees}">
-        First Name: [[${employee.firstName}]] <br>
-        Last Name: [[${employee.lastName}]] <br>
-        Job Title: [[${employee.jobTitle}]] <br>
-        <a href="#" th:href="@{/employeedetail/{id} (id=${employee.id})}">View Detail</a>
-        <hr class="my-4">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6">
+            <ul class="list-unstyled" th:each="department : ${departments}">
+                <li class="media">
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">[[${department.name}]]</h5>
+                        <ul th:each="employee : ${department.employees}">
+                            <li>
+                                <a th:href="@{/employeedetail/{id} (id=${employee.id})}">
+                                    [[${employee.firstName}]]
+                                    [[${employee.lastName}]],
+                                    [[${employee.jobTitle}]]
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col"></div>
     </div>
-
 </div>
 
 <!-- Optional JavaScript -->

@@ -10,6 +10,8 @@ Admin Links
 Nav Bar
 
 Nav Links
+
+
 <!--<div th:fragment="navLinks">-->
 <!--    <ul>-->
 <!--        <li><a th:href="@{/}">Index</a></li>-->
@@ -21,4 +23,27 @@ Nav Links
 <!--            </form>-->
 <!--        </li>-->
 <!--    </ul>-->
+<!--</div>-->
+
+
+<!--ALL DEPARTMENTS-->
+<!--<div th:each="department : ${departments}">-->
+<!--    <h3>[[${department.name}]]</h3>-->
+<!--</div>-->
+
+
+
+<!--<h1>Employees By Department</h1>-->
+<!--<div th:each="department : ${departments}">-->
+
+<!--    <h4>[[${department.name}]]</h4><br>-->
+
+<!--    <div th:each="employee : ${department.employees}">-->
+<!--        First Name: [[${employee.firstName}]] <br>-->
+<!--        Last Name: [[${employee.lastName}]] <br>-->
+<!--        Job Title: [[${employee.jobTitle}]] <br>-->
+<!--        <a href="#" th:href="@{/employeedetail/{id} (id=${employee.id})}">View Detail</a>-->
+<!--        <hr class="my-4">-->
+<!--    </div>-->
+
 <!--</div>-->
