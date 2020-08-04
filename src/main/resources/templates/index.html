@@ -11,6 +11,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css">
 
+    <link rel="stylesheet" th:href="@{/styles/main.css}">
     <style>
         .logout {
             background: none!important;
@@ -68,8 +69,13 @@
     </nav>
 </div>
 
-
-<h1 class="text-center">We Are Sterling Solutions</h1>
+<div class="hero-image">
+    <div class="hero-text">
+        <h1>Sterling Solutions</h1>
+        <p>Talent Sourcing Community</p>
+        <a th:href="@{/alldepartments}"><button class="btn btn-secondary">Explore</button></a>
+    </div>
+</div>
 
 <div sec:authorize="isAuthenticated()" class="text-center">
 Welcome, <div sec:authentication="name"></div>
